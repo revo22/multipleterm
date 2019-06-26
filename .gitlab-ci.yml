@@ -5,7 +5,7 @@
 image: busybox:latest
 
 before_script:
-  - echo "test"
+  - echo "branch test"
 
 after_script:
   - echo "After script section"

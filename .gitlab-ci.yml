@@ -5,10 +5,8 @@
 image: alpine:latest
 
 before_script:
-  - echo "Before script section"
-  - echo "For example you might run an update here or install a build dependency"
-  - echo "Or perhaps you might print out some debugging details"
-
+  - echo "Sync"
+  
 after_script:
   - echo "After script section"
   - echo "For example you might do some cleanup here"

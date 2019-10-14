@@ -1,0 +1,35 @@
+kind: pipeline
+name: default
+
+steps:
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./.m2/repository
+      
+- name: test
+  image: maven:3-jdk-10
+  commands:
+  - mvn install
+
+
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./.m2/repository
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache

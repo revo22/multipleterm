@@ -15,3 +15,13 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+
+  my_first_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: docker://alpine:3.8
+      - name: My first step
+        run: echo "one"
+      - name: My second step
+        run: echo "two"

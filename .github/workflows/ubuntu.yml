@@ -1,0 +1,17 @@
+name: CI
+
+on: [push,create,commit_comment]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: apt-get update && apt-get install -y curl
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        curl https://www.google.fr

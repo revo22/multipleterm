@@ -1,6 +1,6 @@
-name: CI
+name: Ubuntu
 
-on: [push,create,commit_comment]
+on: [push]
 
 jobs:
   build:

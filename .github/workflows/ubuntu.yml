@@ -9,9 +9,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: apt-get update && apt-get install -y curl
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        curl https://www.google.fr
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Install Dependencies
+      run: npm install
+    
+    - name: Build
+      run: npm run build
+
+    - name: Test
+      run: npm run test

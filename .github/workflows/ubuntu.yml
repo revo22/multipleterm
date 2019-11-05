@@ -9,14 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-
-    - name: Cache node modules
-      uses: actions/cache@v1
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+    
+    - uses: docker://adeo-docker-adeo-customer-engagement-dev.jfrog.io/sales-continuous-delivery-light:latest
 
     - name: Install Dependencies
       run: npm install
